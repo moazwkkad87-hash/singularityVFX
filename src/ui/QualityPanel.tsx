@@ -139,7 +139,7 @@ export function QualityPanel() {
         aria-labelledby={`${panelId}-title`}
       >
         <header className="qp-head">
-          <div>
+          <div className="qp-head__titles">
             <div id={`${panelId}-title`} className="qp-title">Graphics</div>
             <div className="qp-sub">Gargantua quality</div>
           </div>
