@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gargantua texture bake</title>
+    <style>
+      body { margin: 40px; background: #0b0b0b; color: #ddd; font: 14px/1.5 ui-monospace, monospace; }
+      button { padding: 10px 18px; background: #f2c08a; color: #111; border: 0; border-radius: 6px; cursor: pointer; font: inherit; }
+      pre { margin-top: 24px; color: #9a9a9a; }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 16px">Gargantua texture bake</h1>
+    <p>Renders every procedural texture and downloads HD + SD WebP files.<br />
+      Put them in <code>public/textures/hd</code> and <code>public/textures/sd</code>
+      (the downloaded names are prefixed <code>hd_</code> / <code>sd_</code>).<br />
+      Or run <code>npm run bake</code> to do this headlessly.</p>
+    <button id="bake">Bake all</button>
+    <pre id="log"></pre>
+    <script type="module" src="/src/tools/bake.ts"></script>
+  </body>
+</html>

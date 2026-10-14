@@ -1,0 +1,109 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: radial-gradient(ellipse at 50% 45%, #0d0a08 0%, #030303 55%, #000 100%);
+  color: #e9e2d6;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+  user-select: none;
+}
+
+.preloader--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader__core {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  display: grid;
+  place-items: center;
+}
+
+.preloader__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.preloader__track {
+  fill: none;
+  stroke: rgba(233, 226, 214, 0.08);
+  stroke-width: 1;
+}
+
+.preloader__bar {
+  fill: none;
+  stroke: #f2c08a;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px rgba(255, 170, 90, 0.85)) drop-shadow(0 0 10px rgba(255, 140, 60, 0.45));
+}
+
+/* a slowly breathing "event horizon" with a thin photon ring */
+.preloader__hole {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 170, 0.55),
+    0 0 18px 2px rgba(255, 150, 70, 0.35),
+    0 0 60px 8px rgba(255, 120, 40, 0.12);
+  animation: preloader-breathe 3.2s ease-in-out infinite;
+}
+
+.preloader__percent {
+  position: relative;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: rgba(233, 226, 214, 0.85);
+}
+
+.preloader__title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.62em;
+  margin-right: -0.62em; /* optically centre the tracked word */
+  color: rgba(233, 226, 214, 0.9);
+}
+
+.preloader__stage {
+  min-height: 1.2em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(233, 226, 214, 0.45);
+}
+
+.preloader__stage--error {
+  max-width: 320px;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: #f0a58a;
+}
+
+@keyframes preloader-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__hole { animation: none; }
+  .preloader { transition-duration: 0.3s; }
+}
